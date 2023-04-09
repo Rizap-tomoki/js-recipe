@@ -12,7 +12,7 @@ const resetButton = document.getElementById("reset-button")
 
 // 問題
 const mondais = [
-  "今日はいい天気ですね。",
+  "はいい天気ですね。",
   "しかし、昨日は雨でした。",
   "そして、お出かけは中止になりました。",
   "今日がいい天気でもなんの意味もない。",
