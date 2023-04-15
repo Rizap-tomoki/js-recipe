@@ -1,11 +1,7 @@
-const number = 24
-
-// n を 1 から、 number まで、 値を 1 ずつ増やしながら、 for の {} の中身を繰り返す
-for (let n = 1; n <= number; n++) {
-  // n を 3 で割ったあまりが 0
-  if (n % 3 === 0) {
-    console.log(`${n}!!!!!!!`)
+for (let i = 1; i <= 50; i++) {
+  if (i % 3 === 0 || /3/.test(i)) {
+    console.log(`${i}⭐️`)
   } else {
-    console.log(n)
+    console.log(i)
   }
 }
