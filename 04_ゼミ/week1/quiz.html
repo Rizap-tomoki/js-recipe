@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScriptで遊んでみよう</title>
+  </head>
+  <body>
+    <div id="display">俺の趣味はどれだ？_</div>
+    <button id="button">野球</button>
+    <button id="button2">サッカ〜</button>
+    <button id="button3">昼寝</button>
+    <script>
+      // カウンターアプリに発展させてみましょう
+
+      const display = document.getElementById("display")
+      const x = document.getElementById("button")
+      const y = document.getElementById("button2")
+      const z = document.getElementById("button3")
+      x.onclick = function () {
+        display.textContent = "正解！"
+      }
+      y.onclick = function () {
+        display.textContent = "ざんねん"
+      }
+      z.onclick = function () {
+        display.textContent = "惜しい"
+      }
+    </script>
+  </body>
+</html>
