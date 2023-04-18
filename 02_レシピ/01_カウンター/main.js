@@ -1,12 +1,24 @@
 const display = document.getElementById("display")
-const plusButton = document.getElementById("plus-button")
+const button = document.getElementById("button")
 
 let count = 0
 
-// ボタン要素のonclickハンドラに関数を代入する
-plusButton.onclick = function() {
-  // count を更新
+const countUp = function() {
   count += 1
-  // count を表示
-  display.textContent = count
+  display.textContent = count / 100
+}
+
+let id = null
+
+button.onclick = function() {
+  if (id === null) {
+    // start
+    id = setInterval(countUp, 10)
+    button.textContent = "stop"
+  } else {
+    // stop
+    clearInterval(id)
+    id = null
+    button.textContent = "start"
+  }
 }
