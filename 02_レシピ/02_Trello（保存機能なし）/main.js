@@ -1,19 +1,20 @@
 const inputElement = document.getElementById("input-todo")
 const container = document.getElementById("cards-container")
-const addButton = document.getElementById("add-button")
-
+const listcontainer = document.getElementById("list-container")
+const addlist = document.getElementById("list-footer")
 // 追加ボタンを押したときの処理を登録
-addButton.onclick = function() {
+window.document.onkeydown = function (e) {
   // カードを作成する
-  const card = createCard(inputElement.value)
-  container.append(card)
-
-  // 入力欄を空にする
-  inputElement.value = ""
+  if (e.key === "Enter") {
+    const card = createCard(inputElement.value)
+    container.append(card)
+    listcontainer.append(card)
+    inputElement.value = ""
+  }
 }
 
 // 共通の処理：テキストからカードを作成する
-const createCard = function(text) {
+const createCard = function (text) {
   // カードの枠を作る
   const card = document.createElement("div")
   card.className = "card"
@@ -29,10 +30,11 @@ const createCard = function(text) {
   deleteButton.className = "delete"
 
   // 削除ボタンを押したときの処理を登録
-  deleteButton.onclick = function() {
+  deleteButton.onkeydown = function () {
     // カードを削除する
     card.remove()
   }
+
   card.append(deleteButton)
 
   return card
