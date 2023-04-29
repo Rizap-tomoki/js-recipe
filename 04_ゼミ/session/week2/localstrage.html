@@ -23,6 +23,8 @@
       // 保存したメモを管理する配列を宣言する。
       let memos = []
 
+      // ローカルストレージのmemosキーにJSONにしたmemosを保存する。
+
       // 「追加」ボタンを押したら、inputタグに入力した値を保存して、ブラウザ(DOM Tree)に追加する。
       sortButton.onclick = function () {
         memos.sort()
@@ -38,21 +40,22 @@
       addButton.onclick = function () {
         // 1. 配列にinput.valueを追加する。
         memos.push(input.value)
-        console.log(memos)
-        memos.reverse()
-        console.log(memos)
-        // 2. DOM Treeに追加する。(表示する)
-        // 2-1.いったん、memoContainerの中のタグを全部消す。
+        localStorage.memos = JSON.stringify(memos)
+
         memoContainer.textContent = ""
 
-        // 2-2. 配列から新しいdivタグを作って、memoContainerに追加する。
-        for (let i = 0; i < memos.length; i++) {
-          // 2-2-1. 新しいdivタグを作る
-          const div = document.createElement("div")
-          // 2-2-2. divタグのtextContentに配列の中身を代入する
-          div.textContent = memos[i]
-          // 2-2-3. memoContainerに追加して、divタグをDOMTreeに追加する
-          memoContainer.append(div)
+        if (localStorage.memos) {
+          // ローカルストレージのmemosキーからJSONを読み込む。
+          const memosJson = localStorage.memos
+          // JSON.parseで配列にして、memosを更新する。
+          memos = JSON.parse(memosJson)
+
+          // ページ読み込み時に、配列の内容をブラウザに反映する。
+          for (let i = 0; i < memos.length; i++) {
+            const div = document.createElement("div")
+            div.textContent = memos[i]
+            memoContainer.append(div)
+          }
         }
       }
     </script>
